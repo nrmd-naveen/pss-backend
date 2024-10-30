@@ -5,6 +5,7 @@ const bookingRouter = Router();
 
 bookingRouter.post('/create', async (req, res)=>{
     const data = req.body;
+    console.log(data)
     if(data && req.userId){
         const createdBooking = await BookingModel.create({
             createdBy : req.userId,

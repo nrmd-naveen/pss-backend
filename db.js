@@ -40,7 +40,8 @@ const Order = new Schema({
     isClosed: { type: Boolean, default: false },
     closedAt: { type: Date, required: false },
     bookings: [{ type: Schema.Types.ObjectId, ref: 'booking' }],
-    closedBy: { type: ObjectId, ref: 'users' }
+    closedBy: { type: ObjectId, ref: 'users' },
+    hourLimit: { type: Number, default: 4}
 });
 
 const UserModel = mongoose.model('users', User);

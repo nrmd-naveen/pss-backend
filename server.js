@@ -22,7 +22,7 @@ app.use('/user', userRouter)
 app.use('/admin', adminRouter)
 
 // Authenticated API calls
-userRouter.use(userMiddleware);
+app.use(userMiddleware);
 
 app.use('/order', orderRouter)
 app.use('/booking', bookingRouter)
