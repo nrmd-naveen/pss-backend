@@ -6,7 +6,8 @@ const ObjectId = Schema.Types.ObjectId;
 const User = new Schema({
     email : { type : String, unique : true},
     name : String,
-    password : String
+    password : String,
+    createdAt : { type: Date, default: Date.now }
 })
 
 const Admin = new Schema({

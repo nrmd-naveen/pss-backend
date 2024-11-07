@@ -1,6 +1,6 @@
 const { Router } = require('express')
 const jwt = require('jsonwebtoken');
-const { UserModel, ItemModel, OrderModel, BookingModel } = require('../../db');
+const { UserModel } = require('../../db');
 const userRouter = Router();
 
 require('dotenv').config();
@@ -16,7 +16,8 @@ userRouter.post('/signup', async (req, res)=>{
         const createdUser = await UserModel.create({
             email : email,
             password : password,
-            name : name
+            name : name,
+            createdAt : Date.now()
         })
         
         const token = jwt.sign({

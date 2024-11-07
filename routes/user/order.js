@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const { OrderModel, ItemModel, UserModel, BookingModel } = require('../../db');
+const { closeOrderMiddleware } = require('../../middlewares/closeOrders');
 const orderRouter = Router();
 
 // menu Items
@@ -19,6 +20,8 @@ orderRouter.get('/items', async (req, res)=>{
     
 })
 
+// updating closed orders
+orderRouter.use(closeOrderMiddleware);
 
 orderRouter.get('/liveOrders', async (req, res)=>{
     
@@ -38,6 +41,7 @@ orderRouter.get('/liveOrders', async (req, res)=>{
         })
     }
 })
+
 
 orderRouter.post('/close', async (req,res)=>{
     const orderId = req.body.orderId;
